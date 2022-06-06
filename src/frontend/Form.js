@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 class SelectForm extends React.Component {
     constructor(props) {
@@ -21,7 +22,11 @@ class SelectForm extends React.Component {
            genderError: false
        }
        this.validateForm = this.validateForm.bind(this);
-       this.onChangeInput = this.onChangeInput.bind(this);
+       this.onChangeInput = this.onChangeInput.bind(this);        
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
     }
 
     validateForm() {
@@ -70,6 +75,25 @@ class SelectForm extends React.Component {
         else {
             this.setState({genderError: true})
         }
+    
+        // Constructing form data
+        var signupformData = {
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            gender: gender
+        }
+
+        console.log(signupformData);
+
+        // Post data to server
+        axios.post('/user', signupformData)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });        
     }
 
     onChangeInput(event) {
@@ -78,7 +102,7 @@ class SelectForm extends React.Component {
     
         this.setState({[name]: value})
 
-        console.log(name + ' ' + value);
+        //console.log(name + ' ' + value);
     }
 
     /*
@@ -100,16 +124,9 @@ class SelectForm extends React.Component {
     };
     */
 
-    handleSubmit = e => {
-        e.preventDefault();
-    }
-    
-
-    //const { fname, lname, email, gender } = this.state
-
     render() {
         return (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={this.handleSubmit}>
                 {/*
                 <label>First Name</label>
                 <input 
@@ -167,7 +184,7 @@ class SelectForm extends React.Component {
                 style={{border: (this.state.emailError)?"2px solid red":""}}
                 value={this.state.email}
                 name="email"
-                placeholder="Email"
+                placeholder="Email *"
                 onChange={(e) => this.onChangeInput(e)}
                 //value=""
             />
@@ -178,7 +195,7 @@ class SelectForm extends React.Component {
                 name="gender"
                 onChange={(e) => this.onChangeInput(e)}
             >
-                <option value="">Please select gender</option>
+                <option value="">Gender *</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="nonbinary">Non-binary</option>
