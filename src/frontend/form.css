@@ -1,0 +1,109 @@
+/*
+body {
+    font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
+    background: #3AAFAB;
+    color: #fff;
+    padding: 2em 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #29807d;
+    border-radius: 1em;
+}
+
+.container h2 {
+    margin-left: 50%;
+}
+
+.container * {
+    box-sizing: border-box;
+}
+
+.flex-outer, .flex-inner {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flex-outer {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.flex-inner {
+    padding: 0 1em;
+    justify-content: space-between;
+}
+
+.flex-outer li, .flex-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.flex-outer > li:not(:last-child) {
+    margin-bottom: 3em;
+}
+
+.flex-outer li label,
+.flex-outer li p {
+  padding: 8px;
+  font-weight: 300;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;
+  max-width: 220px;
+}
+
+.flex-outer > li > label + *,
+.flex-inner {
+  flex: 1 0 220px;
+}
+
+.flex-outer li p {
+  margin: 0;
+}
+*/
+
+input[type=text], input[type=email], select {
+    width: 100%;
+    padding: 1em 3em;
+    margin: 2em 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.container {
+    border-radius: 1em;
+    background-color: #f2f2f2;
+    padding: 3em;
+    margin: 3em;
+}
+
+.container h2 {
+    color: gray;
+}
+
+.submit {
+    width: 100%;
+    background-color: #2caba7;
+    color: #fff;
+    padding: 1em 3em;
+    margin: 2em 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit:hover {
+    background-color: #21827f;
+}

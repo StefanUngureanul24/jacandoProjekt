@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
+import './form.css';
+
 class SelectForm extends React.Component {
     constructor(props) {
         super(props);
@@ -102,51 +104,68 @@ class SelectForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <div className='container'>
+                <h2>Info</h2>
+                <form onSubmit={this.handleSubmit}>
                 
-            <input 
-                type="text"
-                style={{border: (this.state.firstnameError)?"2px solid red":""}}
-                value={this.state.firstname}
-                name="firstname"
-                placeholder="First Name *"
-                onChange={(e) => this.onChangeInput(e)}
-            />
+                    
+                            
+                            <input 
+                                type="text"
+                                style={{border: (this.state.firstnameError)?"2px solid red":""}}
+                                value={this.state.firstname}
+                                name="firstname"
+                                placeholder="First Name *"
+                                onChange={(e) => this.onChangeInput(e)}
+                            />
+                    
+                        <br/>
+                    
+                            
+                            <input 
+                                type="text"
+                                style={{border: (this.state.lastnameError)?"2px solid red":""}}
+                                value={this.state.lastname}
+                                name="lastname"
+                                placeholder="Last Name *"
+                                onChange={(e) => this.onChangeInput(e)}
+                            />
+                    
 
-            <input 
-                type="text"
-                style={{border: (this.state.lastnameError)?"2px solid red":""}}
-                value={this.state.lastname}
-                name="lastname"
-                placeholder="Last Name *"
-                onChange={(e) => this.onChangeInput(e)}
-            />
+                    
+                        
+                            <input 
+                                type="email"
+                                style={{border: (this.state.emailError)?"2px solid red":""}}
+                                value={this.state.email}
+                                name="email"
+                                placeholder="Email *"
+                                onChange={(e) => this.onChangeInput(e)}
+                            />
+                    
 
-            <input 
-                type="email"
-                style={{border: (this.state.emailError)?"2px solid red":""}}
-                value={this.state.email}
-                name="email"
-                placeholder="Email *"
-                onChange={(e) => this.onChangeInput(e)}
-            />
+                    
+                            <select
+                                style={{border: (this.state.genderError)?"2px solid red":""}}
+                                value={this.state.gender}
+                                name="gender"
+                                onChange={(e) => this.onChangeInput(e)}
+                            >
+                                <option value="">Gender *</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="nonbinary">Non-binary</option>
+                            </select>
+                    
 
-            <select
-                style={{border: (this.state.genderError)?"2px solid red":""}}
-                value={this.state.gender}
-                name="gender"
-                onChange={(e) => this.onChangeInput(e)}
-            >
-                <option value="">Gender *</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="nonbinary">Non-binary</option>
-            </select>
+                        {/*<br />*/}
+                        <button className='submit' onClick={this.validateForm}>Submit</button>
+                
+                    
+
+                </form>
             
-            <button onClick={this.validateForm}>Submit</button>
-            </form>
-            
-            
+            </div>
         );
     }
 }
