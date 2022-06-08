@@ -28,6 +28,10 @@ class SelectForm extends React.Component {
        this.onChangeInput = this.onChangeInput.bind(this);        
     }
 
+    componentDidMount() {
+        document.title = "Form Jacando AG"
+    }
+
     handleSubmit(event) {
         event.preventDefault();
     }
