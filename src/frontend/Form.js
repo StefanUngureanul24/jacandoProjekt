@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 class SelectForm extends React.Component {
     constructor(props) {
@@ -89,10 +90,12 @@ class SelectForm extends React.Component {
         // Post data to server
         axios.post('http://localhost:3001', signupformData)
             .then(function (response) {
-                console.log(response);
+                //console.log(response);
+                //this.setState({message:'Succes'})
+                Swal.fire('Data successfully submitted', 'Ok', 'succes');
             })
             .catch(function (error) {
-                console.log(error);
+                Swal.fire('Error', 'X', 'error');
             });        
     }
 
