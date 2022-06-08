@@ -36,19 +36,6 @@ class SelectForm extends React.Component {
         const email = this.state.email;
         const gender = this.state.gender;
     
-        /*
-        if (firstname) 
-            alert('Succes')
-        else
-            alert('Fail')
-        
-
-        if (gender === "")
-            alert('Fail')
-        else
-            alert('Succes')
-        */
-    
         if (firstname) {
             this.setState({firstnameError: false})
         }    
@@ -77,26 +64,31 @@ class SelectForm extends React.Component {
             this.setState({genderError: true})
         }
     
-        // Constructing form data
-        var signupformData = {
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
-            gender: gender
+        if (firstname && lastname && email && gender) {
+            // Constructing form data
+            var signupformData = {
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                gender: gender
+            }
+
+            console.log(signupformData);
+
+            // Post data to server
+            axios.post('http://localhost:3001', signupformData)
+                .then(function (response) {
+                    //console.log(response);
+                    //this.setState({message:'Succes'})
+                    Swal.fire('Data successfully submitted', 'Ok', 'success');
+                })
+                .catch(function (error) {
+                    Swal.fire('Error', 'X', 'error');
+                });
         }
-
-        console.log(signupformData);
-
-        // Post data to server
-        axios.post('http://localhost:3001', signupformData)
-            .then(function (response) {
-                //console.log(response);
-                //this.setState({message:'Succes'})
-                Swal.fire('Data successfully submitted', 'Ok', 'success');
-            })
-            .catch(function (error) {
-                Swal.fire('Error', 'X', 'error');
-            });        
+        else {
+            Swal.fire('Error', 'X', 'error');
+        }    
     }
 
     onChangeInput(event) {
@@ -108,62 +100,10 @@ class SelectForm extends React.Component {
         //console.log(name + ' ' + value);
     }
 
-    /*
-    handleChange(event) {
-        this.setState({value: event.target.value});
-    }
-
-    handleSubmit(event) {
-        alert('Gender : ' + this.state.value);
-        event.preventDefault();
-    }
-    
-
-    handleInputChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value,
-        });
-        alert(e.target.value);
-    };
-    */
-
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                {/*
-                <label>First Name</label>
-                <input 
-                    type="text"
-                    name="fname"
-                    //placeholder="First Name"
-                    onChange={this.handleInputChange}                      
-                />
                 
-                <label>Last Name</label>
-                <input 
-                    type="text" 
-                    name="lname"
-                    onChange={this.handleInputChange}
-                />
-
-                <label>Email</label>
-                <input 
-                    type="email"
-                    name="email"
-                    onChange={this.handleInputChange}                      
-                />
-
-                <label>
-                    Gender:
-                    <select value={this.state.value} onChange={this.handleInputChange}>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="nonbinary">Non-Binary</option>                        
-                    </select>
-                </label>
-                <button type="submit">Submit</button>
-                */}
-            
             <input 
                 type="text"
                 style={{border: (this.state.firstnameError)?"2px solid red":""}}
@@ -189,7 +129,6 @@ class SelectForm extends React.Component {
                 name="email"
                 placeholder="Email *"
                 onChange={(e) => this.onChangeInput(e)}
-                //value=""
             />
 
             <select
