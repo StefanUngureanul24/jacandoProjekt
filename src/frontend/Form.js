@@ -82,14 +82,14 @@ class SelectForm extends React.Component {
                 .then(function (response) {
                     //console.log(response);
                     //this.setState({message:'Succes'})
-                    Swal.fire('Data successfully submitted', 'Ok', 'success');
+                    Swal.fire('Data successfully submitted', 'Please refresh the page for new entry', 'success');
                 })
                 .catch(function (error) {
-                    Swal.fire('Error', 'X', 'error');
+                    Swal.fire('Error', 'Connexion not properly established', 'error');
                 });
         }
         else {
-            Swal.fire('Error', 'X', 'error');
+            Swal.fire('Error', 'Please fill all the data in', 'error');
         }    
     }
 
@@ -147,13 +147,9 @@ class SelectForm extends React.Component {
                         <option value="nonbinary">Non-binary</option>
                     </select>
             
-                {/*<br />*/}
                 <button className='submit' onClick={this.validateForm}>Submit</button>
-        
-                    
-
-                </form>
-            
+                            
+                </form>            
             </div>
         );
     }

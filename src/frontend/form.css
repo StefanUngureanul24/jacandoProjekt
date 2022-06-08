@@ -71,6 +71,10 @@ body {
 }
 */
 
+::placeholder {
+    color: #2caba7;
+}
+
 input[type=text], input[type=email], select {
     width: 100%;
     padding: 1em 3em;
@@ -81,16 +85,18 @@ input[type=text], input[type=email], select {
     box-sizing: border-box;
 }
 
+/*
 input[type=email] {
     margin-bottom: 3em;
 }
+*/
 
 .container {
     border-radius: 1em;
     background-color: #DCDCDC;
     padding: 1.5em;
     margin: 0 auto;
-    margin-top: 0.5em;
+    margin-top: 2.5em;
     width: 50%;
 }
 
@@ -117,15 +123,44 @@ input[type=email] {
 
 .selectGender {
     background-color: #fff;
-    /*border: thin solid blue;*/
+    color: #2caba7;
+    -webkit-appearance: none;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #fff;
+    border: thin #B8B8B8;
+    border-radius: 4px;
+    background-position-x: 95%;
+
+    /*
+    width: 268px;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1;
+    border: 0;
+    border-radius: 5px;
+    height: 34px;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #ddd;
+    -webkit-appearance: none;
+    background-position-x: 244px;
+    */
+
+    /*background-color: #fff;
+    color: gray;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(https://tinyurl.com/22s26jw9) 100% / 15% no-repeat #fff;
+    */
+
+    /*
     border: thin;
     border-radius: 4px;
     display: inline-block;
-    font: inherit;
+    
+    font-size: 15px;
+    color: gray;
+    font-stretch: normal;    
     line-height: 1.5em;
     padding: 0.5em 3.5em 0.5em 1em;
-
-    /* reset */
 
     margin: 0 0 1em 0;      
     -webkit-box-sizing: border-box;
@@ -147,4 +182,5 @@ input[type=email] {
     5px 5px,
     2.5em 2.5em;
   background-repeat: no-repeat;
+    */
 }
