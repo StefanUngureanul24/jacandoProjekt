@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
 // For data acces - CORS policy
 app.use(cors());
 
-app.post('/user', function(req, res) {
+app.post('', function(req, res) {
     console.log(req.body);
 })
 

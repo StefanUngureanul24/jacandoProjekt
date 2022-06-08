@@ -87,7 +87,7 @@ class SelectForm extends React.Component {
         console.log(signupformData);
 
         // Post data to server
-        axios.post('/user', signupformData)
+        axios.post('http://localhost:3001', signupformData)
             .then(function (response) {
                 console.log(response);
             })
