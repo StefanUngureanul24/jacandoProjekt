@@ -1,6 +1,7 @@
 const http = require('http');
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 const hostname = 'localhost';
 const port = 3001;
@@ -12,6 +13,9 @@ const server = http.createServer((req, res) => {
     res.end('Hello World');
 });
 */
+
+// For data acces - CORS policy
+app.use(cors());
 
 app.post('/user', function(req, res) {
     console.log(req.body);
