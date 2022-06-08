@@ -16,10 +16,10 @@ const server = http.createServer((req, res) => {
 });
 */
 
+mongoose.connect('mongodb://localhost');
+
 // For data acces - CORS policy
 app.use(cors());
-
-mongoose.connect('mongodb://localhost/', {useNewUrlParser: true});
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -41,11 +41,12 @@ app.post('/', function(req, res) {
     var User = mongoose.model('User', UserSchema, 'users');
     
     var User1 = new User({ firstname: firstname, lastname: lastname, email: email, gender: gender });
-    User1.save(function(data, err) {
+    
+    User1.save(function(err, data) {
         if (err) {
-            res.send({status:0, result:err});
+            res.send({status:0, result: err});
         } else {
-            res.send({status:1, result:data});
+            res.send({status:1, result: User1});
         }
     });
     
