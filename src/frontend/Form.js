@@ -92,7 +92,7 @@ class SelectForm extends React.Component {
             .then(function (response) {
                 //console.log(response);
                 //this.setState({message:'Succes'})
-                Swal.fire('Data successfully submitted', 'Ok', 'succes');
+                Swal.fire('Data successfully submitted', 'Ok', 'success');
             })
             .catch(function (error) {
                 Swal.fire('Error', 'X', 'error');
