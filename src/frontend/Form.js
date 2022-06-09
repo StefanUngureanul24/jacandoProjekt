@@ -8,6 +8,14 @@ class SelectForm extends React.Component {
     constructor(props) {
         super(props);
         
+        /* 
+            State to get input and select value
+
+            dataError: variables to manage error when
+                input field is empty
+                or gender select element has its default value
+                will turn border red and not send data to the server
+        */
         this.state = {
            firstname: "",
            lastname: "",
@@ -22,20 +30,37 @@ class SelectForm extends React.Component {
        this.onChangeInput = this.onChangeInput.bind(this);        
     }
 
+    /* 
+        Change page's title to Form Jacando AG
+        when the component is inserted to the DOM 
+    */
     componentDidMount() {
         document.title = "Form Jacando AG"
     }
 
+    /* 
+        Prevent page from refreshing after submit
+    */
     handleSubmit(event) {
         event.preventDefault();
     }
 
+    /* 
+        Function when data is submitted
+    */
     validateForm() {
+        /* 
+            All input values
+        */
         const firstname = this.state.firstname;
         const lastname = this.state.lastname;
         const email = this.state.email;
         const gender = this.state.gender;
-    
+        
+        /* 
+            If input fields are empty
+            then variableError are changed   
+        */
         if (firstname) {
             this.setState({firstnameError: false})
         }    
@@ -64,6 +89,10 @@ class SelectForm extends React.Component {
             this.setState({genderError: true})
         }
     
+        /* 
+            If all input and select fields have a non-empty value
+            then send data to the server
+        */
         if (firstname && lastname && email && gender) {
             // Constructing form data
             var signupformData = {
@@ -75,14 +104,17 @@ class SelectForm extends React.Component {
 
             console.log(signupformData);
 
-            // Post data to server
+            /* 
+                Post data to server 
+                and print success or error message 
+                using sweetalert
+            */
             axios.post('http://localhost:3001', signupformData)
                 .then(function (response) {
                     Swal.fire('Data successfully submitted', '', 'success');
                 })
                 .catch(function (error) {
-                    Swal.fire('Error', 'Connexion not properly established', 'error');
-                    alert(error);
+                    Swal.fire('Error', 'Connexion not properly established', 'error');                    
                 });
         }
         else {
