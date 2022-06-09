@@ -76,7 +76,7 @@ class SelectForm extends React.Component {
             this.setState({lastnameError: true})
         }
     
-        if (email) {
+        if (email && validator.isEmail(email)) {
             this.setState({emailError: false})
         }    
         else {
