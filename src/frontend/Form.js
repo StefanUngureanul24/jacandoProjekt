@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import validator from 'validator';
 
 import './form.css';
 
@@ -93,7 +94,7 @@ class SelectForm extends React.Component {
             If all input and select fields have a non-empty value
             then send data to the server
         */
-        if (firstname && lastname && email && gender) {
+        if (firstname && lastname && email && validator.isEmail(email) && gender) {
             // Constructing form data
             var signupformData = {
                 firstname: firstname,
