@@ -105,7 +105,7 @@ class SelectForm extends React.Component {
             console.log(signupformData);
 
             /* 
-                Post data to server 
+                Post data to server using axios 
                 and print success or error message 
                 using sweetalert
             */
@@ -117,11 +117,19 @@ class SelectForm extends React.Component {
                     Swal.fire('Error', 'Connexion not properly established', 'error');                    
                 });
         }
+        /* 
+            If one or more empty input/select values
+            are empty
+        */
         else {
             Swal.fire('Error', 'Please fill all the data in', 'error');
         }    
     }
 
+    /* 
+        Change component state when values
+        are added to the input/select fields
+    */
     onChangeInput(event) {
         const name = event.target.name;
         const value = event.target.value;
@@ -129,6 +137,16 @@ class SelectForm extends React.Component {
         this.setState({[name]: value})
     }
 
+    /* 
+        UI structure:
+        - container
+            - title
+            - First Name input field
+            - Last Name input field
+            - Email input field
+            - Gender select field 
+            - Button to submit data
+    */
     render() {
         return (
             <div className='container'>
