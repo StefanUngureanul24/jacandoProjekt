@@ -8,13 +8,7 @@ class SelectForm extends React.Component {
     constructor(props) {
         super(props);
         
-        /*
-        this.state = {value: ''};
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        */
-
-       this.state = {
+        this.state = {
            firstname: "",
            lastname: "",
            email: "",
@@ -84,8 +78,6 @@ class SelectForm extends React.Component {
             // Post data to server
             axios.post('http://localhost:3001', signupformData)
                 .then(function (response) {
-                    //console.log(response);
-                    //this.setState({message:'Succes'})
                     Swal.fire('Data successfully submitted', '', 'success');
                 })
                 .catch(function (error) {
@@ -103,8 +95,6 @@ class SelectForm extends React.Component {
         const value = event.target.value;
     
         this.setState({[name]: value})
-
-        //console.log(name + ' ' + value);
     }
 
     render() {

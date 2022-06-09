@@ -9,11 +9,9 @@ const User = require('./User.schema');
 const hostname = 'localhost';
 const port = 3001;
 
-//mongoose.connect('mongodb://localhost');
+const dbUri = "mongodb://localhost/form";
 
-const dbUri = "mongodb://localhost";
-
-const connectDB = async () => {
+const connectDB = async() => {
     try {
     await mongoose.connect(dbUri);
     console.log("Connected");
@@ -32,22 +30,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.post('/', function(req, res) {
+    
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
     var email = req.body.email;
     var gender = req.body.gender;
     
-    /*
-    var UserSchema = mongoose.Schema({
-        firstname: String,
-        lastname: String,
-        email: String,
-        gender: String
-    });
-    
-    var User = mongoose.model('User', UserSchema, 'users');
-    */
-
     var User1 = new User({ firstname: firstname, lastname: lastname, email: email, gender: gender });
     
     User1.save(function(err, data) {
@@ -57,9 +45,9 @@ app.post('/', function(req, res) {
             res.send({status:1, result: User1});
         }
     });
-    
+
     console.log(req.body);
-})
+});
 
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
