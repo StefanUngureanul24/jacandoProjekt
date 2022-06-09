@@ -76,6 +76,11 @@ class SelectForm extends React.Component {
             this.setState({lastnameError: true})
         }
     
+        /*
+            Special case:
+            if email is not empty and has an email adress format
+            verified with validator
+        */
         if (email && validator.isEmail(email)) {
             this.setState({emailError: false})
         }    
