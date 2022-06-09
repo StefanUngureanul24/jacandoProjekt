@@ -86,10 +86,11 @@ class SelectForm extends React.Component {
                 .then(function (response) {
                     //console.log(response);
                     //this.setState({message:'Succes'})
-                    Swal.fire('Data successfully submitted', 'Please refresh the page for new entry', 'success');
+                    Swal.fire('Data successfully submitted', '', 'success');
                 })
                 .catch(function (error) {
                     Swal.fire('Error', 'Connexion not properly established', 'error');
+                    alert(error);
                 });
         }
         else {

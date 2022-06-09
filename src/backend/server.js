@@ -4,11 +4,25 @@ const app = express();
 const cors = require('cors');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+const User = require('./User.schema');
 
 const hostname = 'localhost';
 const port = 3001;
 
-mongoose.connect('mongodb://localhost');
+//mongoose.connect('mongodb://localhost');
+
+const dbUri = "mongodb://localhost";
+
+const connectDB = async () => {
+    try {
+    await mongoose.connect(dbUri);
+    console.log("Connected");
+    } catch (error) {
+    console.log("Something went wrong", error);
+    }
+};
+
+connectDB();
 
 // For data acces - CORS policy
 app.use(cors());
@@ -23,6 +37,7 @@ app.post('/', function(req, res) {
     var email = req.body.email;
     var gender = req.body.gender;
     
+    /*
     var UserSchema = mongoose.Schema({
         firstname: String,
         lastname: String,
@@ -31,7 +46,8 @@ app.post('/', function(req, res) {
     });
     
     var User = mongoose.model('User', UserSchema, 'users');
-    
+    */
+
     var User1 = new User({ firstname: firstname, lastname: lastname, email: email, gender: gender });
     
     User1.save(function(err, data) {
