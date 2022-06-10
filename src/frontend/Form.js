@@ -128,7 +128,7 @@ class SelectForm extends React.Component {
             are empty
         */
         else {
-            Swal.fire('Error', 'Please fill all the data in', 'error');
+            Swal.fire('Error', 'Please fill all the data in correctly', 'error');
         }    
     }
 
