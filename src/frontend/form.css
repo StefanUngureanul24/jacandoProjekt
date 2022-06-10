@@ -13,10 +13,6 @@ body {
     border-radius: 1em;
 }
 
-.container h2 {
-    margin-left: 50%;
-}
-
 .container * {
     box-sizing: border-box;
 }
